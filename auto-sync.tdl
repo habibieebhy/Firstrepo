@@ -1,0 +1,38 @@
+[#Menu: Gateway of Tally]
+    Add: Key Item: Before: @@LocQuit: "Export Material Data" : E : Display : Material Export Report
+
+[Report: Material Export Report]
+    Form: Material Export Form
+    Title: "Material Export Data"
+    XML Tag: "MaterialData"
+
+[Form: Material Export Form]
+    Part: Material Export Part
+
+[Part: Material Export Part]
+    Line: Material Export Line
+    Repeat: Material Export Line: InventoryEntries
+    Scroll: Vertical
+
+[Line: Material Export Line]
+    Field: Material Name Field, Rate Field, Quantity Field, Vendor Field
+
+[Field: Material Name Field]
+    Set As: $StockItemName
+    XML Tag: "Material"
+
+[Field: Rate Field]
+    Set As: $Rate
+    XML Tag: "Rate"
+
+[Field: Quantity Field]
+    Set As: $ClosingBalance
+    XML Tag: "Quantity"
+
+[Field: Vendor Field]
+    Set As: $LedgerName
+    XML Tag: "Vendor"
+
+[Collection: InventoryEntries]
+    Type: StockItem
+    Fetch: Name, ClosingBalance, Rate
